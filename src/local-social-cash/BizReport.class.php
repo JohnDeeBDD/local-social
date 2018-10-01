@@ -24,7 +24,8 @@ table, th, td {
 
 </style>
 <table>";
-        $output = $output . "<tr><td>First Name</td><td>Last Name</td><td>Phone</td><td>Email</td><td>Facebook</td></tr>";
+        $output = $output . "<tr><td><strong>First Name</strong></td><td><strong>Last Name</strong></td><td><strong>Phone</strong></td><td><strong>Email</strong></td><td><strong>Facebook</strong></td></tr>";
+        $numUsers = 0;
         foreach ( $blogusers as $user ) {
             $ID = $user->ID;
             $output = $output . "<tr>";
@@ -35,8 +36,9 @@ table, th, td {
             $output = $output . "<td>" . $email . "</td>";
             $output = $output . "<td>" . get_user_meta($ID, 'fbName', TRUE) . "</td>"; 
             $output = $output . "</tr>";
+            $numUsers = $numUsers + 1;
         }
-        $output = $output . "</table>";
+        $output = $output . "</table><h2>Number of Users: $numUsers</h2>";
         return $output;
     }
 }
