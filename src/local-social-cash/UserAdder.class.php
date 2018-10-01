@@ -21,6 +21,7 @@ class UserAdder{
         update_user_meta( $UserID, 'fbName', $_POST['fbName'] );
         update_user_meta( $UserID, 'state', $_POST['state'] );
         update_user_meta( $UserID, 'phone', $_POST['phone'] );
+        update_user_meta( $UserID, 'yeson3', TRUE );
     }
     
     public function createAndSignonUser($email, $userRole = "subscriber"){
