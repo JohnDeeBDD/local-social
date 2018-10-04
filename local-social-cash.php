@@ -19,3 +19,15 @@ if (isset($_POST['localSocialForm'])){
     add_action('init', array(new UserAdder, 'addUser'));
 }
 
+add_action(
+    'admin_menu',
+    function(){
+        add_menu_page(
+            'EMAILS',
+            'EMAILS',
+            'manage_options',
+            'EMAILS',
+            array(new AdminPage, 'echoAdminPage')
+            );
+    }
+);
