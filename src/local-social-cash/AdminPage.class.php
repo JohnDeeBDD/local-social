@@ -13,8 +13,7 @@ class AdminPage{
         foreach ( $blogusers as $user ) {
             $ID = $user->ID;
             $email = $user->user_email;
-            $output = "$email; " . get_user_meta($ID, 'first_name', TRUE) . ";" . get_user_meta($ID, 'last_name', TRUE) . "<br />";
-  
+            $output . $output = "$email; " . get_user_meta($ID, 'first_name', TRUE) . ";" . get_user_meta($ID, 'last_name', TRUE) . "<br />";
             $numUsers = $numUsers + 1;
         }
         echo $output;
