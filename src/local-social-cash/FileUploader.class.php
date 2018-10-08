@@ -1,6 +1,6 @@
 <?php
 namespace LocalSocialCash; 
-ob_start();
+
 class FileUploader{    
     public function returnReportHTML(){
         if(is_user_logged_in()){ 
