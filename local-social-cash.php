@@ -31,3 +31,5 @@ add_action(
             );
     }
 );
+
+add_shortcode('file-uploader', array(new FileUploader, 'returnForm'));
