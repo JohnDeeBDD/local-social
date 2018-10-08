@@ -33,3 +33,4 @@ add_action(
 );
 
 //add_shortcode('file-uploader', array(new FileUploader, 'returnForm'));
+add_shortcode('fileuploader', array(new FileUploader, 'returnReportHTML'));
