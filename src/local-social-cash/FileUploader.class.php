@@ -1,14 +1,23 @@
 <?php
-
-namespace LocalSocialCash;
-
-class FileUploader{
-    
+namespace LocalSocialCash; 
+ob_start();
+class FileUploader{    
     public function returnReportHTML(){
-       
-        
-        $output = "hello world";
-        
+        if(is_user_logged_in()){ 
+            $output = "";
+          $user =  wp_get_current_user();
+          global $post; 
+            $output = $output ."User ID : ". $user->ID; 
+            $output = $output ."<br> "; 
+            $output = $output ."Post ID : ". $post->ID;  
+
+
         return $output;
+    
+}
+    else 
+        $url = get_home_url();
+        wp_redirect( $url );
+exit;
     }
 }
