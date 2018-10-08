@@ -2,7 +2,15 @@
 namespace LocalSocialCash; 
 
 class FileUploader{    
-    public function returnReportHTML(){
+        pubic function returnReportHTML(){
+            $output = <<<output
+ <form>
+ </form>
+ output;
+            return $output;
+        }
+        
+        public function xxx(){
         if(is_user_logged_in()){ 
             $output = "";
           $user =  wp_get_current_user();
@@ -20,4 +28,6 @@ class FileUploader{
         wp_redirect( $url );
 exit;
     }
+    
+ 
 }
