@@ -1,6 +1,8 @@
 <?php
 namespace LocalSocialCash; 
-$GLOBALS['msg'];
+$msg;
+
+
 class FileUploader{    
     
     
