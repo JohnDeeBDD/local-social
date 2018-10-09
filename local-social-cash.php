@@ -33,3 +33,6 @@ add_action(
 );
 
 add_shortcode('fileuploader', array(new FileUploader, 'returnReportHTML'));
+if (isset($_POST['file-from-form'])){
+     add_action('init', array(new FileUploader, 'listenToFormSubmission'));
+}
