@@ -33,9 +33,6 @@ output;
 public function listenToFormSubmission(){
 
 $target_dir = wp_upload_dir();
-echo "<pre>";
-print_r($target_dir);
-echo "</pre>";
 $target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
