@@ -9,7 +9,7 @@ class FileUploader{
         lastName
         email
         phone
-        zip
+        state
         FacebookUrl
         file
         */
