@@ -16,7 +16,7 @@ class FileUploader{
         FacebookUrl
         file
         */
-
+echo $GLOBALS['msg'];
         $output = <<<output
 
 <form method='POST' enctype='multipart/form-data'>
@@ -25,7 +25,7 @@ class FileUploader{
 </form>
 
 output;
-echo $GLOBALS['msg'];
+
         return $output;
     }
 
