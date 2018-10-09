@@ -1,6 +1,6 @@
 <?php
 namespace LocalSocialCash; 
-$msg;
+
 
 
 class FileUploader{    
@@ -33,7 +33,7 @@ output;
 public function listenToFormSubmission(){
 
 $target_dir = wp_upload_dir();
-$target_file = $target_dir[path]."/".basename($_FILES['userFile']['name']);
+$target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
 
