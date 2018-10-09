@@ -1,6 +1,8 @@
 <?php
 namespace LocalSocialCash; 
+
 class FileUploader{    
+    
     
     public function returnReportHTML(){
         /*
@@ -21,7 +23,7 @@ class FileUploader{
 </form>
 
 output;
-
+echo $GLOBALS['msg'];
         return $output;
     }
 
@@ -67,7 +69,7 @@ if ($uploadOk == 0) {
    $temp = explode(".", $_FILES["userFile"]["name"]);
    $newfilename = round(microtime(true)) . '.' . end($temp);
     if (move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file. $newfilename)) {
-    echo "The file ". basename( $_FILES["userFile"]["name"]). " has been uploaded.";
+   $GLOBALS['msg'] =  "The file ". basename( $_FILES["userFile"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
