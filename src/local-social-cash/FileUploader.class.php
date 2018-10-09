@@ -1,6 +1,6 @@
 <?php
 namespace LocalSocialCash; 
-$GLOBALS['msg'];
+
 
 
 class FileUploader{    
@@ -16,7 +16,7 @@ class FileUploader{
         FacebookUrl
         file
         */
-echo $GLOBALS['msg'];
+
         $output = <<<output
 
 <form method='POST' enctype='multipart/form-data'>
@@ -33,6 +33,9 @@ output;
 public function listenToFormSubmission(){
 
 $target_dir = wp_upload_dir();
+echo "<pre>";
+print_r($target_dir);
+echo "</pre>";
 $target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
@@ -71,7 +74,7 @@ if ($uploadOk == 0) {
    $temp = explode(".", $_FILES["userFile"]["name"]);
    $newfilename = round(microtime(true)) . '.' . end($temp);
     if (move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file. $newfilename)) {
-   $GLOBALS['msg'] =  "The file ". basename( $_FILES["userFile"]["name"]). " has been uploaded.";
+   echo "The file ". basename( $_FILES["userFile"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
