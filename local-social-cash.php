@@ -29,3 +29,25 @@ add_shortcode('fileuploader', array(new FileUploader, 'returnReportHTML'));
 if (isset($_POST['file-from-form'])){
      add_action('init', array(new FileUploader, 'listenToFormSubmission'));
 }
+
+if (isset($_POST['localSocialForm'])){
+    $to = 'johndeebdd@gmail.com';
+    $subject = 'Form Submission';
+    $body = "First Name: " . $_POST['firstName'] . "\n\r";
+    $body = $body . "Last Name: " . $_POST['lastName'] . "\n\r";
+    $body = $body . "Email: " . $_POST['email'] . "\n\r";
+    $body = $body . "Phone: " . $_POST['phone'] . "\n\r";
+    $body = $body . "Facebook: " . $_POST['fbName'] . "\n\r";
+    $body = $body . "State: " . $_POST['state'] . "\n\r";
+    wp_mail( $to, $subject, $body, $headers );
+}
+
+if (isset($_POST['yappa-name'])){
+    $to = 'a.mayfield18@gmail.com';
+    $subject = 'YAPPA INTEREST';
+    $body = "Name: " . $_POST['yappa-name'] . "\n\r";
+    $body = $body . "Email: " . $_POST['yappa-email'] . "\n\r";
+    $body = $body . "Phone: " . $_POST['yappa-phone'] . "\n\r";
+    $body = $body . "Site URL: " . $_POST['yappa-site-url'] . "\n\r";
+    wp_mail( $to, $subject, $body, $headers );
+}
