@@ -39,7 +39,7 @@ if (isset($_POST['localSocialForm'])){
     $body = $body . "Phone: " . $_POST['phone'] . "\n\r";
     $body = $body . "Facebook: " . $_POST['fbName'] . "\n\r";
     $body = $body . "State: " . $_POST['state'] . "\n\r";
-    wp_mail( $to, $subject, $body, $headers );
+    \wp_mail( $to, $subject, $body, $headers );
 }
 
 if (isset($_POST['yappa-name'])){
@@ -49,5 +49,5 @@ if (isset($_POST['yappa-name'])){
     $body = $body . "Email: " . $_POST['yappa-email'] . "\n\r";
     $body = $body . "Phone: " . $_POST['yappa-phone'] . "\n\r";
     $body = $body . "Site URL: " . $_POST['yappa-site-url'] . "\n\r";
-    wp_mail( $to, $subject, $body, $headers );
+    \wp_mail( $to, $subject, $body, $headers );
 }
