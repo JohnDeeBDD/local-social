@@ -8,6 +8,7 @@
  Author URI: https://generalchicken.net
  */
 namespace LocalSocialCash;
+
 require_once (plugin_dir_path(__FILE__). 'src/local-social-cash/autoloader.php');
 add_shortcode('biz-report', array(new BizReport, 'returnReportHTML'));
 if (isset($_POST['localSocialForm'])){
@@ -25,6 +26,9 @@ add_action(
             );
     }
 );
+
+$TaskCPT = new TaskCPTs();
+
 add_shortcode('fileuploader', array(new FileUploader, 'returnReportHTML'));
 if (isset($_POST['file-from-form'])){
      add_action('init', array(new FileUploader, 'listenToFormSubmission'));
