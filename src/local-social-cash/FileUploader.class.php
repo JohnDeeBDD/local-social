@@ -18,6 +18,7 @@ class FileUploader{
         $output = <<<output
 
 <form method='POST' enctype='multipart/form-data' name = 'task-prover-form'>
+  <input type = "text" name = "email" />
   <input type="file" name ="userFile" />
   <input type="submit" name="file-from-form"/>
 </form>
@@ -30,18 +31,22 @@ output;
 
     public function listenToFormSubmission(){
         $filePath = $this->storeFile();
+        global $post;
+        $taskPageID = $post->ID;
         // Create post object
         $my_post = array(
             'post_title'    => 'Proof Subimssion',
             'post_content'  => 'Here is some content',
             'post_status'   => 'publish',
-            'post_author'   => 1,
+            //'post_author'   => 1,
             'post_type' => 'proof',
         );
         
         // Insert the post into the database
-        $ID = wp_insert_post( $my_post );
-        update_post_meta( $ID, 'proof-file', $filePath );
+        $insertedPostID = wp_insert_post( $my_post );
+        update_post_meta( $insertedPostID, 'proof-file', $filePath );
+        update_post_meta( $insertedPostID, 'given-email', $givenEmail);
+        update_post_meta( $insertedPostID, 'task-ID', $taskPageID);
         /*$user =  wp_get_current_user();
         global $post;
         $output = $output ."User ID : ". $user->ID;
