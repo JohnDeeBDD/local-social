@@ -7,7 +7,7 @@ class GigViewShortcode{
     public function returnShortcode(){
         
         if(!(is_user_logged_in())){
-            return ("You must be logged in to view this page.");
+            return ("You must be logged in to view this page. Please <a href = '/wp-login.php'>click here to login</a>.");
         }
         
         
@@ -35,7 +35,7 @@ class GigViewShortcode{
                 global $post;$backup=$post;
                 if(!($this->boolUserHasProofForTask($userID, $ID))){
                     $post=$backup;
-                    $output = $output . '<li><a href = "' . get_the_permalink() . '"/>' . get_the_title(). '</a></li>';
+                    $output = $output . '<li><a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a></li>';
                 }
             }
             $output = $output . '</ul>';
