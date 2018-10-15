@@ -71,7 +71,7 @@ $name = basename($_FILES['userFile']['name']);
 
     
         $target_dir = wp_upload_dir();
-        //$target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
+        $target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         $temp = explode(".", $_FILES["userFile"]["name"]);
         $newfilename = $this->randomString();
