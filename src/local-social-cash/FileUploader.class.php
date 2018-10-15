@@ -56,6 +56,20 @@ output;
     }
     
     public function storeFile(){
+
+      
+require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+
+// Get the path to the upload directory.
+$wp_upload_dir = wp_upload_dir();
+
+//print_r($wp_upload_dir);
+
+$name = basename($_FILES['userFile']['name']);
+
+    
         $target_dir = wp_upload_dir();
         //$target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -63,10 +77,26 @@ output;
         $newfilename = $this->randomString();
         $newfilename = $newfilename . "." . end($temp);
         $target_file = $target_dir['path']."/" . $newfilename;
-        //echo("image file type : $imageFileType <br /> target_file $target_file<br /> newfilename $newfilename");
-        //die();
+        
         move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file);
+
+
+        $attachment = $wp_upload_dir['url'].'/'.$newfilename;
+        //print_r($attachment);
+
+    $image_id = wp_insert_attachment($attachment, $newfilename, $post_id);
+
+    // Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+    //require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    
+ 
+    // Generate the metadata for the attachment, and update the database record.
+    $attach_data = wp_generate_attachment_metadata( $image_id, $name );
+
+    wp_update_attachment_metadata( $image_id, $attach_data );
         return $target_file;
+
+
     }
         
 
