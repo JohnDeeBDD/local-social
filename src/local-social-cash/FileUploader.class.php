@@ -17,7 +17,7 @@ class FileUploader{
 
         $output = <<<output
 
-<form method='POST' enctype='multipart/form-data'>
+<form method='POST' enctype='multipart/form-data' name = 'task-prover-form'>
   <input type="file" name ="userFile" />
   <input type="submit" name="file-from-form"/>
 </form>
@@ -29,19 +29,39 @@ output;
 
 
     public function listenToFormSubmission(){
-
+        $filePath = $this->storeFile();
+        // Create post object
+        $my_post = array(
+            'post_title'    => 'Proof Subimssion',
+            'post_content'  => 'Here is some content',
+            'post_status'   => 'publish',
+            'post_author'   => 1,
+            'post_type' => 'proof',
+        );
+        
+        // Insert the post into the database
+        $ID = wp_insert_post( $my_post );
+        update_post_meta( $ID, 'proof-file', $filePath );
+        /*$user =  wp_get_current_user();
+        global $post;
+        $output = $output ."User ID : ". $user->ID;
+        $output = $output ."<br> ";
+        $output = $output ."Post ID : ". $post->ID;
+        */
+    }
+    
+    public function storeFile(){
         $target_dir = wp_upload_dir();
-        $target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
+        //$target_file = $target_dir['path']."/".basename($_FILES['userFile']['name']);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         $temp = explode(".", $_FILES["userFile"]["name"]);
         $newfilename = $this->randomString();
         $newfilename = $newfilename . "." . end($temp);
-        if (move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file . $newfilename)){
-            echo "The file ". $newfilename . " has been uploaded.";
-         }else{
-            echo "Sorry, there was an error uploading your file.";
-        }
-//}
+        $target_file = $target_dir['path']."/" . $newfilename;
+        //echo("image file type : $imageFileType <br /> target_file $target_file<br /> newfilename $newfilename");
+        //die();
+        move_uploaded_file($_FILES["userFile"]["tmp_name"], $target_file);
+        return $target_file;
     }
         
 

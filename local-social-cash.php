@@ -28,10 +28,11 @@ add_action(
 );
 
 $TaskCPT = new TaskCPTs();
+$ProofCPT = new ProofCPTs();
 
 add_shortcode('fileuploader', array(new FileUploader, 'returnReportHTML'));
 if (isset($_POST['file-from-form'])){
      add_action('init', array(new FileUploader, 'listenToFormSubmission'));
 }
 
-
+add_shortcode('gig-view', array(new GigViewShortcode, 'returnShortcode'));
