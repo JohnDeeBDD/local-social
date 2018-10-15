@@ -30,8 +30,9 @@ output;
 
 
     public function listenToFormSubmission(){
+        global $post;$backup=$post;
         $filePath = $this->storeFile();
-        global $post;
+        $post=$backup;
         $taskPageID = $post->ID;
         // Create post object
         $my_post = array(

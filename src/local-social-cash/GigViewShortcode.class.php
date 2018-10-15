@@ -35,7 +35,7 @@ class GigViewShortcode{
                 global $post;$backup=$post;
                 if(!($this->boolUserHasProofForTask($userID, $ID))){
                     $post=$backup;
-                    $output = $output . '<li>' . get_the_title() . '</li>';
+                    $output = $output . '<li>' . get_the_permalink() . '</li>';
                 }
             }
             $output = $output . '</ul>';
