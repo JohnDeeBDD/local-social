@@ -46,7 +46,7 @@ output;
         // Insert the post into the database
         $insertedPostID = wp_insert_post( $my_post );
         update_post_meta( $insertedPostID, 'proof-file', $filePath );
-        update_post_meta( $insertedPostID, 'given-email', $givenEmail);
+        //update_post_meta( $insertedPostID, 'given-email', $givenEmail);
         update_post_meta( $insertedPostID, 'task-ID', $taskPageID);
         /*$user =  wp_get_current_user();
         global $post;
