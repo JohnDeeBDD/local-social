@@ -19,7 +19,7 @@ class GigViewShortcode{
          $output = $output ."Post ID : ". $post->ID;
          return $output;
          */
-        $args = array('post_type' => 'task');
+        $args = array('post_type' => 'task', 'posts_per_page' => -1);
         // The Query
         $the_query = new \WP_Query( $args );
         
