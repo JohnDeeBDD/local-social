@@ -67,11 +67,11 @@ class GigViewShortcode{
         // Comment Loop
         if ( $comments ) {
             foreach ( $comments as $comment ) {
-                $output = $output . '<p>' . $comment->comment_content . '</p>';
+                $output = '<p><span style = "background-color: green;">DONE</span></p>';
+                //$output = $output . '<p>' . $comment->comment_attachment . '</p>';
             }
         } else {
-            $output = $output . 'No results found.';
-        }
+            $output = $output . '<p><span style = "background-color: red;">NOT COMMENT POSTED YET</span></p>';        }
         
         return $output;
     }
