@@ -8,7 +8,7 @@ class GigViewShortcode{
         
         if(!(is_user_logged_in())){
             $x = wp_login_url( $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-            return ("You must be logged in to view this page. Please <a href = '$x'>click here</a>.");
+            return ("<h1>You must be logged in to view this page. Please <a href = '$x'>click here</a>.</h1>");
         }
         
         
