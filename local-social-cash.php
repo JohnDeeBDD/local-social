@@ -39,3 +39,10 @@ if (isset($_POST['file-from-form'])){
 }
 
 add_shortcode('gig-view', array(new GigViewShortcode, 'returnShortcode'));
+
+$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+
+if (strpos($url,'task') !== false) {
+    add_action('init', array(new FileUploader, 'addTextToCommentField'));
+}

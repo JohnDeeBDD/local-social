@@ -127,4 +127,19 @@ $name = basename($_FILES['userFile']['name']);
         }
         return $str;
     }
+    
+    public function addTextToCommentField(){
+        $output = <<<output
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+jQuery(document).ready(function(){
+     jQuery('.attachmentRules').hide();
+     jQuery("#comment").val("Optional comment.");
+     jQuery("#reply-title").text("Upload Your Screen Shot Here");
+     jQuery("#submit").val('Post Your Screenshot');
+});
+</script>
+output;
+        echo $output;
+    }
 }
