@@ -32,10 +32,13 @@ class GigViewShortcode{
                 $user =  wp_get_current_user();
                 $userID = $user->ID;
                 //var_dump($userID); die();
+                $user_info = get_userdata($userID);
+                $user_email = $user_info->user_email;
                 global $post;$backup=$post;
                 if(!($this->boolUserHasProofForTask($userID, $ID))){
                     $post=$backup;
                     $output = $output . '<li><a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a></li>';
+                    $output = $output . $this->returnCommentRoll($user_email, $ID);
                 }
             }
             $output = $output . '</ul>';
@@ -47,6 +50,30 @@ class GigViewShortcode{
         
         return $output;
         
+    } 
+    
+    public function returnCommentRoll($userEmail, $taskID){
+        $output = "";
+        $args = array(
+            'author_email' => $userEmail,
+            'include_unapproved' => TRUE,
+            'post_id' => $taskID,
+        );
+        
+        // The Query
+        $comments_query = new \WP_Comment_Query;
+        $comments = $comments_query->query( $args );
+        $output = "";
+        // Comment Loop
+        if ( $comments ) {
+            foreach ( $comments as $comment ) {
+                $output = $output . '<p>' . $comment->comment_content . '</p>';
+            }
+        } else {
+            $output = $output . 'No results found.';
+        }
+        
+        return $output;
     }
     
     public function boolUserHasProofForTask($userID, $taskID){
