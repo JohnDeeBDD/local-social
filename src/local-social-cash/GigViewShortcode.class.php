@@ -37,8 +37,9 @@ class GigViewShortcode{
                 global $post;$backup=$post;
                 if(!($this->boolUserHasProofForTask($userID, $ID))){
                     $post=$backup;
-                    $output = $output . '<li><a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a></li>';
+                    $output = $output . '<li><a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a>';
                     $output = $output . $this->returnCommentRoll($user_email, $ID);
+                    $output = $output . "</li>";
                 }
             }
             $output = $output . '</ul>';
@@ -71,7 +72,7 @@ class GigViewShortcode{
                 //$output = $output . '<p>' . $comment->comment_attachment . '</p>';
             }
         } else {
-            $output = $output . '<p><span style = "background-color: red;">NOT COMMENT POSTED YET</span>  <a onclick="window.location.href=this">refresh</a></p>';        }
+            $output = $output . '<p><span style = "background-color: red;">No comment uploaded yet.</span>  <a onclick="window.location.href=this">refresh</a></p>';        }
         
         return $output;
     }
