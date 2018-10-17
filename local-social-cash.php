@@ -46,3 +46,5 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 if (strpos($url,'task') !== false) {
     add_action('init', array(new FileUploader, 'addTextToCommentField'));
 }
+
+add_shortcode('client-report', array(new ClientReport, 'returnShortcode'));
