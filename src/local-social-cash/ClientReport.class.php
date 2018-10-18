@@ -16,7 +16,7 @@ class ClientReport{
         'author_email' => $author_email,
         'include_unapproved' => TRUE,
         ));
-        //var_dump($comments);die();
+        $this->countActions($postID, $comments);
         //Display the list of comments
         wp_list_comments(array(
             'per_page' => -1, //Allow comment pagination
@@ -57,9 +57,9 @@ class ClientReport{
         
     }
     
-    public function countScreenShots($taskID){
+    public function countActions($taskID, $comments){
         $count = $this->count;
-        $count = $count + 1;
+        $count = $count + count($comments);
         $this->count = $count;
     }
     
