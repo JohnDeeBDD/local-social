@@ -53,8 +53,8 @@ class ClientReport{
                 }
             }
             $output = $output . '</ul>';
-            $output = $output . "Count: " . $this->count . "<br />";
-            $output = $output . "Actions: " . $this->actions . "<br />";
+            //$output = $output . "Count: " . $this->count . "<br />";
+            //$output = $output . "Actions: " . $this->actions . "<br />";
         return $output;
         
     }
