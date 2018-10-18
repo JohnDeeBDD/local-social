@@ -9,8 +9,8 @@
  */
 namespace LocalSocialCash;
 
-//error_reporting(-1);
-//ini_set('display_errors', 'On');
+error_reporting(-1);
+ini_set('display_errors', 'On');
 
 require_once (plugin_dir_path(__FILE__). 'src/local-social-cash/autoloader.php');
 add_shortcode('biz-report', array(new BizReport, 'returnReportHTML'));

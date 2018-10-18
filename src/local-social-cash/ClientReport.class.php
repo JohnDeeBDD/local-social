@@ -5,6 +5,7 @@ namespace LocalSocialCash;
 class ClientReport{
     
     public $count = 0;
+    public $actions = 0;
     
     public function listComments($postID, $author_email){
         ?>
@@ -53,12 +54,14 @@ class ClientReport{
             }
             $output = $output . '</ul>';
             $output = $output . "Count: " . $this->count . "<br />";
+            $output = $output . "Actions: " . $this->actions . "<br />";
         return $output;
         
     }
     
     public function countActions($taskID, $comments){
         $count = $this->count;
+        $actions = $this->actions;
         if(
             ($taskID == 1199 ) or
             ($taskID == 701 ) or
@@ -68,7 +71,26 @@ class ClientReport{
             ($taskID == 514 ) or
             ($taskID == 648 )
             ){return;}
-        $count = $count + count($comments);
+        
+        $count = $count + 1;
+        $actions = $action + 1;        
+        if(
+            ($taskID == 646 ) or
+            ($taskID == 643 ) or
+            ($taskID == 641 ) or
+            ($taskID == 639 ) or
+            ($taskID == 637 ) or
+            ($taskID == 633 ) or
+            ($taskID == 631 ) or
+            ($taskID == 627 ) or
+            ($taskID == 625 ) or
+            ($taskID == 621 ) or
+            ($taskID == 617 ) or
+            ($taskID == 603 ) or
+            ($taskID == 599 ) or
+            ($taskID == 596 ) or
+            ){$actions = $actions + 1;}
+        
         $this->count = $count;
     }
     
