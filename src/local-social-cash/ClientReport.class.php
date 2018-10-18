@@ -59,6 +59,15 @@ class ClientReport{
     
     public function countActions($taskID, $comments){
         $count = $this->count;
+        if(
+            ($taskID == 1199 ) or
+            ($taskID == 701 ) or
+            ($taskID == 549 ) or
+            ($taskID == 529 ) or
+            ($taskID == 525 ) or
+            ($taskID == 514 ) or
+            ($taskID == 648 )
+            ){return;}
         $count = $count + count($comments);
         $this->count = $count;
     }
