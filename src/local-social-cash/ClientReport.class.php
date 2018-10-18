@@ -16,7 +16,7 @@ class ClientReport{
         'author_email' => $author_email,
         'include_unapproved' => TRUE,
         ));
-        
+        var_dump($comments);die();
         //Display the list of comments
         wp_list_comments(array(
             'per_page' => -1, //Allow comment pagination
