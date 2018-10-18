@@ -92,6 +92,7 @@ class ClientReport{
             ){$actions = $actions + 1;}
         
         $this->count = $count;
+        $this->actions = $actions;
     }
     
     public function returnCommentRoll($userEmail, $taskID){
