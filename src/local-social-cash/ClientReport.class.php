@@ -73,7 +73,7 @@ class ClientReport{
             ){return;}
         
         $count = $count + 1;
-        $actions = $action + 1;        
+        $actions = $actions + 1;        
         if(
             ($taskID == 646 ) or
             ($taskID == 643 ) or
