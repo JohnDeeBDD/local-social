@@ -17,7 +17,7 @@ class ClientReport{
         'author_email' => $author_email,
         'include_unapproved' => TRUE,
         ));
-        $this->countActions($postID, $comments);
+        if (count($comment) > 0){$this->countActions($postID, $comments);}
         //Display the list of comments
         wp_list_comments(array(
             'per_page' => -1, //Allow comment pagination
