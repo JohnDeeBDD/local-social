@@ -88,7 +88,7 @@ class ClientReport{
             ($taskID == 617 ) or
             ($taskID == 603 ) or
             ($taskID == 599 ) or
-            ($taskID == 596 ) or
+            ($taskID == 596 )
             ){$actions = $actions + 1;}
         
         $this->count = $count;
