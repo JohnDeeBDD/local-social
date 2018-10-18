@@ -44,7 +44,7 @@ class ClientReport{
                 $the_query->the_post();
                 $ID = get_the_ID();
                 $the_query->the_post();
-                echo ( '<li><a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a>');
+                echo ( '<li> ++ <a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a>');
                 $this->listComments($ID, $author_email);
                 echo "</li>";
                 }
