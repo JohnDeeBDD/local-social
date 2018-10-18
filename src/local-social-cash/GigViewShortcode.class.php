@@ -11,16 +11,11 @@ class GigViewShortcode{
             return ("<h1>You must be logged in to view this page. Please <a href = '$x'>click here</a>.</h1>");
         }
         
-        
-        /*$output = "";
-         $user =  wp_get_current_user();
-         global $post;
-         $output = $output ."User ID : ". $user->ID;
-         $output = $output ."<br> ";
-         $output = $output ."Post ID : ". $post->ID;
-         return $output;
-         */
-        $args = array('post_type' => 'task', 'posts_per_page' => -1);
+        $args = array(
+            'post_type' => 'task', 
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
         // The Query
         $the_query = new \WP_Query( $args );
         
