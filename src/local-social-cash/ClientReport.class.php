@@ -29,7 +29,11 @@ class ClientReport{
     public function returnShortcode(){
         
         $author_email = $_GET['email'];
-        $args = array('post_type' => 'task', 'posts_per_page' => -1);
+        $args = array(
+            'post_type' => 'task', 
+            'posts_per_page' => -1,
+            'post_status' => array('publish', 'pending', 'draft', 'private',)
+        );
         // The Query
         $the_query = new \WP_Query( $args );
         
