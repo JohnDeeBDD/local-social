@@ -4,6 +4,8 @@ namespace LocalSocialCash;
 
 class ClientReport{
     
+    public $count = 0;
+    
     public function listComments($postID, $author_email){
         ?>
         <ol class="commentlist">
@@ -44,14 +46,21 @@ class ClientReport{
                 $the_query->the_post();
                 $ID = get_the_ID();
                 $the_query->the_post();
-                echo ( '<li> ++ <a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a>');
+                echo ( '<li><a href = "' . get_the_permalink() . '" target = "_blank" />' . get_the_title(). '</a>');
                 $this->listComments($ID, $author_email);
                 echo "</li>";
                 }
             }
             $output = $output . '</ul>';
+            $output = $output . "Count: " . $this->count . "<br />";
         return $output;
         
+    }
+    
+    public function countScreenShots($taskID){
+        $count = $this->count;
+        $count = $count + 1;
+        $this->count = $count;
     }
     
     public function returnCommentRoll($userEmail, $taskID){
@@ -70,7 +79,7 @@ class ClientReport{
         if ( $comments ) {
             foreach ( $comments as $comment ) {
                 $output = '<p><span style = "background-color: green;">DONE</span>  <a onclick="window.location.href=this">refresh</a></p>';
-                //$output = $output . '<p>' . $comment->comment_attachment . '</p>';
+                $this->countScreenShots($taskID);
             }
         } else {
             $output = $output . '<p><span style = "background-color: red;">No comment uploaded yet.</span>  <a onclick="window.location.href=this">refresh</a></p>';        }
